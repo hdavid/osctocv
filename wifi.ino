@@ -1,4 +1,4 @@
-
+/*
 #include <ESP8266WiFi.h> // https://github.com/esp8266/Arduino
 #include <ESP8266WiFiMulti.h>
 #include <ESP8266mDNS.h>
@@ -7,9 +7,7 @@
 ESP8266WiFiMulti WiFiMulti;
 
 
-/**
- *  general wifi setup
- */
+// general wifi setup
 void setupWifi() {
   if (!configuration.wifiAPMode) {
     //wifi client
@@ -40,9 +38,7 @@ void setupWifi() {
 }
 
 
-/**
- *  setup pixi as soft access point
- */
+// setup pixi as soft access point
 void setupWifiAP() {
   Serial.print("Wifi in AP Mode. SSID:");
   Serial.print(myName);
@@ -58,10 +54,9 @@ void setupWifiAP() {
 }
 
 
-/**
- * setup bonjour/zeroconfig/mdns for
- * osc, web and rtp midi
- */
+// setup bonjour/zeroconfig/mdns for
+// osc, web and rtp midi
+
 void setupMDNS() {
   if (!MDNS.begin(myName)) {
     Serial.println("Error setting up MDNS responder!");
@@ -74,9 +69,7 @@ void setupMDNS() {
 }
 
 
-/**
- * setup a unique name based on our name and mac address
- */
+//setup a unique name based on our name and mac address
 void setupUniqueName() {
   //unique name
   uint8_t mac[WL_MAC_ADDR_LENGTH];
@@ -92,4 +85,4 @@ void setupUniqueName() {
   myName[n.length() - 1] = 0;
   WiFi.hostname(myName);
 }
-
+*/

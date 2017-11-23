@@ -1,8 +1,8 @@
-// https://github.com/esp8266/Arduino
-// https://github.com/esp8266/Arduino/tree/master/libraries/ESP8266WebServer
-#include <ESP8266WebServer.h>
+/*#include <WiFi.h>
+#include <ESPmDNS.h>
+#include <WiFiClient.h>
 
-ESP8266WebServer webServer(80);
+WiFiServer webServer(80);
 
 // pages are stored in progmem/flash to save RAM
 const char homeHTML[] PROGMEM = "<html>\n<title>OSCPixi</title>\n<link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css' crossorigin='anonymous'>\n<div class='container' style='width:450px;margin20px;padding:20px'>\n \n  <nav class='navbar navbar-default'>\n   <div class='container-fluid'>\n     <div class='collapse navbar-collapse'>\n        <ul class='nav navbar-nav'>\n       <li class='active'><a href='/'>OSCPixi</a><li>\n        <li><a href='/rest'>Rest API</a></li>\n       <li><a href='/wifi'>WLAN</a></li>\n       <li><a href='/status'>Status</a></li>\n       </ul>\n     </div>\n    </div>\n  </nav>\n  \n  <h1>OSCPixi</h1>\n  <p>OSCPixi is. what it is.</p>\n  \n  <h2>OSC API</h2>\n  <p>port 5000<p>\n <p>/out/&lt;1-20&gt;/&lt;trig|gate|cvuni|cvbi|lfo/sine|lfo/saw|lfo/ramp|lfo/tri|lfo/square&gt; float</p>\n  <p>/in/&lt;1-20&gt;/&lt;trig|gate|cvuni|cvbi&gt;</p>\n  \n  <h2>RTP MIDI</h2>\n <p>todo</p>\n \n  <h2>Rest Api</h2>\n <p>/out/?channel=&lt;1-20&gt;&amp;mode=&lt;trig|gate|cvuni|cvbi&gt;&amp;value=float</p>\n <p>/in/?channel&lt;1-20&gt;&amp;mode=&lt;trig|gate|cvuni|cvbi&gt;</p>\n <p> see this web <a href='/rest'>form</a></p>\n \n  <h2>Source</h2>\n <p> \n    source available on \n    <a href='https://github.com/hdavid/osctocv'>https://github.com/hdavid/osctocv</a>\n </p>\n  \n  <h2>Updates</h2>\n  <p> \n    via usb. make sure to unplug the module from your modular power supply first !\n  </p>\n</div>\n<html>";
@@ -19,9 +19,7 @@ const char inputModeError[] PROGMEM = "mode must be one of trig, gate, cvuni, cv
 const char indexError[] PROGMEM = "index must be between 1 and 20";
 const char okReboot[] PROGMEM = "ok. power cycle your device.";
 
-/**
- * handle web traffic
- */
+//handle web traffic
 void handleWebClient() {
   if (configuration.restEnabled) {
     webServer.handleClient();
@@ -29,9 +27,7 @@ void handleWebClient() {
 }
 
 
-/**
- * start our web server
- */
+//start our web server
 void startWebServer() {
   if (configuration.restEnabled) {
     Serial.println("Rest API on port 80");
@@ -40,9 +36,7 @@ void startWebServer() {
 }
 
 
-/**
- * create routes that our webserver must use.
- */
+// create routes that our webserver must use.
 void createWebServerRoutes() {
 
   if (configuration.restEnabled) {
@@ -205,3 +199,5 @@ void webServerSendOK() {
 void webServerSendHome() {
   webServer.send_P(200, textHMTL, homeHTML);
 }
+
+*/

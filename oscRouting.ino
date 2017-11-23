@@ -1,5 +1,5 @@
 
-#include <WiFiUdp.h>
+/*#include <WiFiUdp.h>
 #include <OSCBundle.h>
 #include <OSCData.h>
 
@@ -7,21 +7,18 @@
 WiFiUDP Udp;
 
 
-/**
- *  setup osc server on configured port
- */
+// setup osc server on configured port
+
 void setupOSCServer() {
   if (configuration.oscEnabled) {
     Udp.begin(configuration.oscPort);
     Serial.print("OSC on port ");
-    Serial.println(Udp.localPort());
+    //Serial.println(Udp.localPort());
   }
 }
 
 
-/**
- *  handle osc messages on the wire
- */
+// handle osc messages on the wire
 void receiveOSCMessage() {
   if (configuration.oscEnabled) {
     OSCErrorCode error;
@@ -65,9 +62,8 @@ void receiveOSCMessage() {
 }
 
 
-/**
- *  "/out/" message handling
- */
+// "/out/" message handling
+
 void oscOutMsg(OSCMessage & msg, int addrOffset) {
 
   //get channel
@@ -115,9 +111,7 @@ void oscOutMsg(OSCMessage & msg, int addrOffset) {
 }
 
 
-/**
- *  "/in/" messages handling
- */
+//  "/in/" messages handling
 void oscInMsg(OSCMessage & msg, int addrOffset) {
   //get channel
   int channel = getChannel(msg, addrOffset);
@@ -146,9 +140,7 @@ void oscInMsg(OSCMessage & msg, int addrOffset) {
 }
 
 
-/**
- * get channel from osc path at currect addrOffset
- */
+// get channel from osc path at currect addrOffset
 int getChannel(OSCMessage & msg, int addrOffset) {
   int channel = -1;
   for (int i = 0; i < 20; i++) {
@@ -161,10 +153,8 @@ int getChannel(OSCMessage & msg, int addrOffset) {
 }
 
 
-/**
- * get channel number as char*
- * borrowed from https://github.com/CNMAT/OSC/blob/master/examples/UDPReceive/UDPReceive.ino#L29
- */
+// get channel number as char*
+// borrowed from https://github.com/CNMAT/OSC/blob/master/examples/UDPReceive/UDPReceive.ino#L29/
 char * numToOSCAddress(int channel) {
   static char s[10];
   int i = 9;
@@ -177,4 +167,4 @@ char * numToOSCAddress(int channel) {
   s[i] = '/';
   return &s[i];
 }
-
+*/

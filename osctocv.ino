@@ -1,7 +1,7 @@
 
 #include <pgmspace.h> //PROGMEM
-#include <OSCMessage.h> // dependency: https://github.com/CNMAT/OSC
-#include <Ticker.h>
+//#include <OSCMessage.h> // dependency: https://github.com/CNMAT/OSC
+//#include <Ticker.h>
 #include <Pixi.h>  // dependency: https://github.com/wolfgangfriedrich/Pixi_demo
 
 /**
@@ -14,13 +14,13 @@ Pixi pixi;
  * todo look at faster timers ?
  * https://github.com/esp8266/Arduino/blob/master/doc/libraries.md#ticker
  */
-Ticker ticker;
+//Ticker ticker;
 
 // reset config in eeprom
 boolean resetConfig = false;
 
 //used to build a unique named based on mac address
-char* myName = "oscpixi-xxxx";
+char* myName = "ports-xxxx";
 
 /*
  * last time the timer ran. used to detect underruns
@@ -36,7 +36,7 @@ void setup() {
   pinMode(LED_BUILTIN, OUTPUT);
 
   //unique name
-  setupUniqueName();
+  //setupUniqueName();
   Serial.print(myName);
   Serial.println(" starting.");
 
@@ -44,27 +44,32 @@ void setup() {
   setupConfiguration(); 
   loadConfiguration();
 
+  setupDisplay();
+
   //pixi
   setupPixi();
   setupTimer();
   
-  setupWifi();
+  //setupWifi();
   //delay(500);
-  setupMDNS();
-  setupOSCServer();
-  createWebServerRoutes();
-  startWebServer();
-  setupRtpMidi();
+  //setupMDNS();
+  //setupOSCServer();
+  //createWebServerRoutes();
+  //startWebServer();
+  //setupRtpMidi();
 }
 
 
 void loop() {
+  
+  updateDisplay();
+  
   //blink me please
   digitalWrite(LED_BUILTIN, (millis() / 100) % 2 ? HIGH : LOW);
   //handle clients
-  receiveOSCMessage();
-  handleWebClient();
-  rtpMidiLoop();
+  //receiveOSCMessage();
+  //handleWebClient();
+  //rtpMidiLoop();
   //save configuration if needed
   saveConfiguration(false);
 }
@@ -84,7 +89,7 @@ void inline onTimer() {
 
 
 void setupTimer() {
-  ticker.attach_ms(1, onTimer);  
+  //ticker.attach_ms(1, onTimer);  
 }
 
 
